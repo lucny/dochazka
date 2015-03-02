@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.javacreed.com/gson-deserialiser-example/ -->
+<html lang="en-US" class="csstransforms csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GSON Deserialiser Example | Java Creed</title>
+<meta name="description" content="In this article we will see how to parse complex JSON objects into existing Java objects that do not necessary have the same structure as the JSON object.">
+<meta name="keywords" content="Uncategorized">
+<div class="fit-vids-style" id="fit-vids-style" style="display: none;">­<style>.fluid-width-video-wrapper{width: 100%;position: relative;padding: 0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}</style></div><script data-rocketsrc="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.cs.3zqI3Lf5S5E.O/m=auth/exm=plusone/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCPucaMIAec-bce7x4l0an3POzdmgA/t=zcms/cb=gapi.loaded_1" data-rocketoptimized="true" async=""></script><script data-rocketsrc="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.cs.3zqI3Lf5S5E.O/m=plusone/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCPucaMIAec-bce7x4l0an3POzdmgA/t=zcms/cb=gapi.loaded_0" data-rocketoptimized="true" async=""></script><script type="text/javascript" async="" data-rocketsrc="http://www.google-analytics.com/ga.js" data-rocketoptimized="true"></script><script async="" type="text/javascript" data-rocketsrc="http://pagead2.googlesyndication.com/pub-config/ca-pub-5674469676151789.js" data-rocketoptimized="true"></script><script type="text/javascript" async="" data-rocketsrc="http://www.google-analytics.com/ga.js" data-rocketoptimized="true"></script><script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"00dd58cf9bf164ede6a63a3212c11e5f",petok:"7643733f2998b8f5a6e2545063906d3df702de99-1425319346-1800",zone:"javacreed.com",rocket:"a",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=919620257c/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//]]>
+</script><script type="text/javascript" src="./GSON Deserialiser Example   Java Creed_files/cloudflare.min.js"></script><style type="text/css">.cf-hidden { display: none; } .cf-invisible { visibility: hidden; }</style><script data-module="cloudflare/rocket" id="cfjs_block_13bb6d9e720" onload="CloudFlare.__cfjs_block_13bb6d9e720_load()" onerror="CloudFlare.__cfjs_block_13bb6d9e720_error()" onreadystatechange="CloudFlare.__cfjs_block_13bb6d9e720_readystatechange()" type="text/javascript" src="./GSON Deserialiser Example   Java Creed_files/rocket.js"></script>
+<link rel="shortcut icon" href="http://www.javacreed.com/wp-content/uploads/2014/12/favicon.ico">
+
+<!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/style.css" type="text/css">
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/bootstrap-responsive.css" type="text/css">
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/responsive.css" type="text/css">
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/prettyPhoto.css" type="text/css">
+<link rel="stylesheet" href="./GSON Deserialiser Example   Java Creed_files/options.css" type="text/css">
+<link href="./GSON Deserialiser Example   Java Creed_files/css" rel="stylesheet" type="text/css">
+<script type="text/rocketscript" data-rocketoptimized="true">
+            var tt_home_uri     = 'http://www.javacreed.com';
+            var tt_theme_uri    = 'http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1';
+            var tt_infinite_img = 'http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/images/ajax-loader.gif';
+            var $infinitescroll =  1;
+            var tt_infinite_loadingMsg  = 'Loading the next set of posts...';
+            var tt_infinite_finishedMsg = 'No more pages to load.';
+			var social_media = '1';
+            var sharethis_key = '';
+            var is_header_fixed = '';
+			var stop_nice_scroll = '1';
+        </script>
+ 
+ 
+<meta property="og:title" content="GSON Deserialiser Example | Java Creed"><meta property="og:url" content="http://www.javacreed.com/gson-deserialiser-example/">
+<meta property="og:image" content="http://www.javacreed.com/wp-content/uploads/2012/12/Gson-Deserialiser-Example.png">
+<meta property="og:site_name" content="Java Creed">
+<meta property="og:description" content="Detailed Articles and Examples about Java Technology">
+ 
+ 
+<link rel="author" href="https://plus.google.com/+albertattard">
+<meta name="description" itemprop="description" content="This article continues on a previous article, that described simple and basic use of GSON. In this article we will see how to parse complex JSON objects into">
+<meta name="keywords" itemprop="keywords" content="deserialiser,deserializer,example,gson">
+<link rel="canonical" href="./GSON Deserialiser Example   Java Creed_files/GSON Deserialiser Example   Java Creed.html">
+<script type="text/rocketscript" data-rocketoptimized="true">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-37192864-1']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+ 
+<link rel="alternate" type="application/rss+xml" title="Java Creed » Feed" href="http://www.javacreed.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Java Creed » Comments Feed" href="http://www.javacreed.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Java Creed » GSON Deserialiser Example Comments Feed" href="http://www.javacreed.com/gson-deserialiser-example/feed/">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="./GSON Deserialiser Example   Java Creed_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="sccss_style-css" href="./GSON Deserialiser Example   Java Creed_files/saved_resource" type="text/css" media="all">
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-includes/js/jquery/jquery.js?ver=1.11.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1" data-rocketoptimized="true"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.javacreed.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.javacreed.com/wp-includes/wlwmanifest.xml">
+<link rel="prev" title="Simple GSON Example" href="http://www.javacreed.com/simple-gson-example/">
+<link rel="next" title="GSON Serialiser Example" href="http://www.javacreed.com/gson-serialiser-example/">
+<link rel="shortlink" href="http://www.javacreed.com/?p=4301">
+ 
+<meta name="google-site-verification" content="OyOaQdb21OIQUAQbaqKkkMT6OLSa6qbtWS1kj0NJaRY">
+<script type="text/rocketscript" data-rocketoptimized="true">
+(function(url){
+if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+var wfscr = document.createElement('script');
+wfscr.type = 'text/javascript';
+wfscr.async = true;
+wfscr.src = url + '&r=' + Math.random();
+(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+})('//www.javacreed.com/wp-admin/admin-ajax.php?action=wordfence_logHuman&hid=87D8CC8209F532A94E0A71F9A5D0D8C9'); 
+</script> <script type="text/javascript" async="" data-rocketsrc="//www.javacreed.com/wp-admin/admin-ajax.php?action=wordfence_logHuman&amp;hid=87D8CC8209F532A94E0A71F9A5D0D8C9&amp;r=0.2300325899850577" data-rocketoptimized="true"></script><script type="text/javascript" src="./GSON Deserialiser Example   Java Creed_files/admin-ajax.php"></script><script type="text/javascript" data-rocketsrc="http://wd-edge.sharethis.com/button/checkOAuth.esi" data-rocketoptimized="true"></script><script type="text/javascript" data-rocketsrc="http://wd.sharethis.com/api/getCount2.php?cb=stButtons.processCB&amp;refDomain=www.google.cz&amp;refQuery=&amp;pgurl=http%3A%2F%2Fwww.javacreed.com%2Fgson-deserialiser-example%2F&amp;pubKey=f9e12bf7-408f-461a-9d87-a4a95ba50a46&amp;url=http%3A%2F%2Fwww.javacreed.com%2Fgson-deserialiser-example%2F" data-rocketoptimized="true"></script><script type="text/javascript" data-rocketsrc="https://apis.google.com/js/plusone.js" data-rocketoptimized="true" gapi_processed="true"></script><script type="text/javascript" data-rocketsrc="http://wd-edge.sharethis.com/button/checkOAuth.esi" data-rocketoptimized="true"></script><link rel="stylesheet" type="text/css" href="./GSON Deserialiser Example   Java Creed_files/buttons.f48d075cabb93f026d23cf2c20db30d0.css"></head> <body class="single single-post postid-4301 single-format-standard  medium wpb-js-composer js-comp-ver-3.6.14.1 vc_responsive tt-scrolled" onclick="if(stWidget.buttonClicked==false){stWidget.stopClosing=false;stWidget.openDuration=0;stWidget.stClose(100);}">
+ 
+<header id="header"> <div class="navbar navbar-fixed-top" style="">
+<div class="header-inner clearfix">
+<div class="container"> <div class="btn-logo-container clearfix">
+<a id="logo" class="brand" href="http://www.javacreed.com/"><h1 class="site-name">Java Creed</h1></a> <div class="header-sidebar-container">
+<div class="row">
+</div>
+</div>
+</div>
+</div> </div>
+<div class="navbar-container">
+<div class="navbar-inner clearfix">
+<div class="container"> <div class="nav-toolbar-container">
+<div class="nav span8" id="navigation">
+<select id="main-menu-mobile" class="main-menu-mobile"><option value="">Select page</option><option value="http://www.javacreed.com/tutorials" id="menu-item-mobile-9">Tutorials</option><option value="http://www.javacreed.com/setting-up-the-environment/" id="menu-item-mobile-5162">&nbsp;&nbsp;&nbsp;Setting up the Environment</option>
+<option value="http://www.javacreed.com/first-steps/" id="menu-item-mobile-5073">&nbsp;&nbsp;&nbsp;First Steps</option>
+<option value="http://www.javacreed.com/simple-java-database-swing-application/" id="menu-item-mobile-5170">&nbsp;&nbsp;&nbsp;Simple Java Database Swing Application</option>
+<option value="http://www.javacreed.com/testing-swing-application/" id="menu-item-mobile-5169">&nbsp;&nbsp;&nbsp;Testing Swing Application</option>
+<option value="http://www.javacreed.com/category/articles/" id="menu-item-mobile-4581">Articles</option><option value="http://www.javacreed.com/category/intro/" id="menu-item-mobile-4358">&nbsp;&nbsp;&nbsp;Introduction</option>
+<option value="http://www.javacreed.com/category/collections-2/" id="menu-item-mobile-4519">&nbsp;&nbsp;&nbsp;Collections</option>
+<option value="http://www.javacreed.com/category/concurrency/" id="menu-item-mobile-4396">&nbsp;&nbsp;&nbsp;Concurrency</option>
+<option value="http://www.javacreed.com/category/dependency-injection/" id="menu-item-mobile-5284">&nbsp;&nbsp;&nbsp;Dependency Injection</option>
+<option value="http://www.javacreed.com/category/gson/" id="menu-item-mobile-4237">&nbsp;&nbsp;&nbsp;GSON</option>
+<option value="http://www.javacreed.com/category/io/" id="menu-item-mobile-5286">&nbsp;&nbsp;&nbsp;IO</option>
+<option value="http://www.javacreed.com/category/maven/" id="menu-item-mobile-4491">&nbsp;&nbsp;&nbsp;Maven</option>
+<option value="http://www.javacreed.com/category/object-oriented-programming/" id="menu-item-mobile-5285">&nbsp;&nbsp;&nbsp;Object Oriented Programming</option>
+<option value="http://www.javacreed.com/category/process/" id="menu-item-mobile-4447">&nbsp;&nbsp;&nbsp;Process</option>
+<option value="http://www.javacreed.com/category/spring/" id="menu-item-mobile-4446">&nbsp;&nbsp;&nbsp;Spring</option>
+<option value="http://www.javacreed.com/category/swing/" id="menu-item-mobile-4397">&nbsp;&nbsp;&nbsp;Swing</option>
+<option value="http://www.javacreed.com/category/testing/" id="menu-item-mobile-5287">&nbsp;&nbsp;&nbsp;Testing</option>
+<option value="http://www.javacreed.com/category/how-to/" id="menu-item-mobile-4543">How To</option><option value="http://www.javacreed.com/category/awt/" id="menu-item-mobile-4544">&nbsp;&nbsp;&nbsp;AWT</option>
+<option value="http://www.javacreed.com/category/maven/" id="menu-item-mobile-4577">&nbsp;&nbsp;&nbsp;Maven</option>
+<option value="http://www.javacreed.com/category/utilities/" id="menu-item-mobile-4558">&nbsp;&nbsp;&nbsp;Utilities</option>
+<option value="http://www.javacreed.com/category/error/" id="menu-item-mobile-4699">Error</option>
+<option value="http://www.javacreed.com/clips/" id="menu-item-mobile-4788">Clips</option>
+<option value="http://www.javacreed.com/about-the-website/" id="menu-item-mobile-4494">About The Website</option>
+</select><ul id="menu" class="menu"><li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9   rel     showdropdown"><a title="Tutorials" href="http://www.javacreed.com/tutorials">Tutorials<span> </span></a>
+<ul class="children  " style="display: none;">
+<li id="menu-item-5162" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5162   rel    "><a href="http://www.javacreed.com/setting-up-the-environment/">Setting up the Environment<span> </span></a> </li>
+<li id="menu-item-5073" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5073   rel    "><a href="http://www.javacreed.com/first-steps/">First Steps<span> </span></a> </li>
+<li id="menu-item-5170" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5170   rel    "><a href="http://www.javacreed.com/simple-java-database-swing-application/">Simple Java Database Swing Application<span> </span></a> </li>
+<li id="menu-item-5169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5169   rel    "><a href="http://www.javacreed.com/testing-swing-application/">Testing Swing Application<span> </span></a> </li>
+<span class="mg-menu-tip" style="width:64px"></span></ul>
+</li>
+<li id="menu-item-4581" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-4581   rel     showdropdown"><a href="http://www.javacreed.com/category/articles/">Articles<span> </span></a>
+<ul class="children  ">
+<li id="menu-item-4358" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4358   rel    "><a href="http://www.javacreed.com/category/intro/">Introduction<span> </span></a> </li>
+<li id="menu-item-4519" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4519   rel    "><a href="http://www.javacreed.com/category/collections-2/">Collections<span> </span></a> </li>
+<li id="menu-item-4396" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4396   rel    "><a href="http://www.javacreed.com/category/concurrency/">Concurrency<span> </span></a> </li>
+<li id="menu-item-5284" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5284   rel    "><a href="http://www.javacreed.com/category/dependency-injection/">Dependency Injection<span> </span></a> </li>
+<li id="menu-item-4237" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-4237   rel    "><a href="http://www.javacreed.com/category/gson/">GSON<span> </span></a> </li>
+<li id="menu-item-5286" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5286   rel    "><a href="http://www.javacreed.com/category/io/">IO<span> </span></a> </li>
+<li id="menu-item-4491" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4491   rel    "><a href="http://www.javacreed.com/category/maven/">Maven<span> </span></a> </li>
+<li id="menu-item-5285" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5285   rel    "><a href="http://www.javacreed.com/category/object-oriented-programming/">Object Oriented Programming<span> </span></a> </li>
+<li id="menu-item-4447" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4447   rel    "><a href="http://www.javacreed.com/category/process/">Process<span> </span></a> </li>
+<li id="menu-item-4446" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4446   rel    "><a href="http://www.javacreed.com/category/spring/">Spring<span> </span></a> </li>
+<li id="menu-item-4397" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4397   rel    "><a href="http://www.javacreed.com/category/swing/">Swing<span> </span></a> </li>
+<li id="menu-item-5287" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5287   rel    "><a href="http://www.javacreed.com/category/testing/">Testing<span> </span></a> </li>
+<span class="mg-menu-tip" style="width:67px"></span></ul>
+</li>
+<li id="menu-item-4543" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-4543   rel     showdropdown"><a href="http://www.javacreed.com/category/how-to/">How To<span> </span></a>
+<ul class="children  ">
+<li id="menu-item-4544" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4544   rel    "><a href="http://www.javacreed.com/category/awt/">AWT<span> </span></a> </li>
+<li id="menu-item-4577" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4577   rel    "><a href="http://www.javacreed.com/category/maven/">Maven<span> </span></a> </li>
+<li id="menu-item-4558" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4558   rel    "><a href="http://www.javacreed.com/category/utilities/">Utilities<span> </span></a> </li>
+<span class="mg-menu-tip" style="width:60px"></span></ul>
+</li>
+<li id="menu-item-4699" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4699   rel    "><a href="http://www.javacreed.com/category/error/">Error<span> </span></a> </li>
+<li id="menu-item-4788" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4788   rel    "><a href="http://www.javacreed.com/clips/">Clips<span> </span></a> </li>
+<li id="menu-item-4494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4494   rel    "><a href="http://www.javacreed.com/about-the-website/">About The Website<span> </span></a> </li>
+</ul>
+</div>
+<div class="search-content">
+<form method="get" id="searchform" class="form-search " action="http://www.javacreed.com/">
+<div class="input-append"><button type="submit" id="searchsubmit"></button><input type="search" name="s" class="span2" id="appendedInputButton" onfocus="if(this.value==this.defaultValue)this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;)this.value=this.defaultValue;"></div>
+</form> </div>
+</div>
+</div> </div>
+</div>
+    </div>
+</header>
+ 
+ 
+<div class="wrapper"> 
+<div id="prev" class="">
+<a href="http://www.javacreed.com/gson-serialiser-example/">
+<div class="lightBoxNav navLeft"></div>
+</a>
+<a href="http://www.javacreed.com/gson-serialiser-example/" class="link-content">
+<div class="prev_post"><h3 class="item-title">GSON Serialiser Example</h3><img src="./GSON Deserialiser Example   Java Creed_files/Gson-Serialiser-Example-150x150.png" alt=""> </div>
+</a>
+</div> <div id="next" class="">
+<a href="http://www.javacreed.com/simple-gson-example/">
+<div class="lightBoxNav navRight"></div>
+</a>
+<a href="http://www.javacreed.com/simple-gson-example/" class="link-content">
+<div class="next_post">
+<h3 class="item-title">Simple GSON Example</h3><img src="./GSON Deserialiser Example   Java Creed_files/Simple-GSON-Example-150x150.png" alt=""> </div>
+</a>
+</div><section id="page" class="clearfix content-single">
+<div class="container"><div class="row">
+<div class="span12 content-container">
+<div class="row"> <div class="span9">
+<div class="item-single clearfix"> <header id="item-single-title-1" class="clearfix"> <h2 class="item-title"><a href="./GSON Deserialiser Example   Java Creed_files/GSON Deserialiser Example   Java Creed.html" title="GSON Deserialiser Example">GSON Deserialiser Example</a></h2> <span class="item-single-meta"><a>2 years ago</a> by <a href="http://www.javacreed.com/author/albert/" title="Posts by Albert Attard" rel="author">Albert Attard</a> in <a href="http://www.javacreed.com/category/articles/">Articles</a>, <a href="http://www.javacreed.com/category/gson/">GSON</a> <span>Tagged: </span><a href="http://www.javacreed.com/tag/deserialiser/" rel="tag">Deserialiser</a>, <a href="http://www.javacreed.com/tag/deserializer/" rel="tag">Deserializer</a>, <a href="http://www.javacreed.com/tag/example/" rel="tag">Example</a>, <a href="http://www.javacreed.com/tag/gson/" rel="tag">GSON</a> </span> </header>  
+<div class="tt-share-widget clearfix " id="sharing-1"><span class="st_twitter_hcount" displaytext="Tweet" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-twitter-counter" style="background-image: url(http://w.sharethis.com/images/twitter_counter.png);">&nbsp;<img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">22</span></span></span></span></span></span><span class="st_plusone_hcount" displaytext="Google +1" st_processed="yes"><div style="display:inline-block;overflow:hidden;line-height:0px;position:relative;vertical-align:middle;bottom:0px;width:75px; height:21px;">&nbsp;<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1425319333830" name="I0_1425319333830" src="./GSON Deserialiser Example   Java Creed_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div></div></span><span class="st_linkedin_hcount" displaytext="LinkedIn" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-linkedin-counter" style="background-image: url(http://w.sharethis.com/images/linkedin_counter.png);">&nbsp;<img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">3</span></span></span></span></span></span><span class="st_pinterest_hcount" displaytext="Pinterest" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-pinterest-counter" style="background-image: url(http://w.sharethis.com/images/pinterest_counter.png);">&nbsp;<img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">0</span></span></span></span></span></span><span class="st_facebook_hcount" displaytext="Facebook" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-facebook-counter" style="background-image: url(http://w.sharethis.com/images/facebook_counter.png);">&nbsp;<img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">12</span></span></span></span></span></span><span class="st_email_hcount" displaytext="Email" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-email-counter" style="background-image: url(http://w.sharethis.com/images/email_counter.png);">&nbsp;<img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">2</span></span></span></span></span></span>​<span class="st_stumbleupon_hcount" displaytext="StumbleUpon" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stButton_gradient"><span class="chicklets stumbleupon">StumbleUpon</span><img src="./GSON Deserialiser Example   Java Creed_files/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block;"><span class="stBubble_hcount">0</span></span></span></span></span></span>​</div> <section> <div class="item-image">
+<div class="entry-image clearfix">
+<div class="hover-content"> <img src="./GSON Deserialiser Example   Java Creed_files/Gson-Deserialiser-Example.png" alt="" style="width:100%; height:auto;">
+</div>
+</div>
+</div> <div class="item-content">
+<p>This article continues on a previous <a title="Simple Gson Example" href="http://www.javacreed.com/simple-gson-example/" target="_blank">article</a>, that described simple and basic use of Gson. In this article we will see how to parse complex JSON objects into existing Java objects that do not necessary have the same structure as the JSON object. We will see how the use of the Gson deserialiser (<code>JsonDeserializer</code> <a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonDeserializer.html" target="_blank">Java Doc</a>) in order to control how the JSON object maps to the Java object.</p>
+<h4 class="wpb_toggle wpb_toggle_title_active">Observation</h4><div class="wpb_toggle_content wpb_toggle_open"><p>
+Please note the we will use the terms <em>parse</em> or <em>deserialise</em> interchangeably in this article.</p>
+</div>
+<p>All code listed below is available at: <a href="https://java-creed-examples.googlecode.com/svn/gson/Gson%20Deserialiser%20Example" target="_blank">https://java-creed-examples.googlecode.com/svn/gson/Gson Deserialiser Example</a>. Most of the examples will not contain the whole code and may omit fragments which are not relevant to the example being discussed. The readers can download or view all code from the above link.</p>
+<p>The readers are encouraged to first read the article <a href="http://www.javacreed.com/simple-gson-example/" target="_blank">Simple Gson Example</a> before proceeding, unless they are already familiar with Gson.</p>
+<h2>A Simple Example</h2>
+<p>Let’s say we have the following JSON object, where it contains a popular Java book (<a target="_blank" href="http://www.amazon.com/Java%C2%BF-Puzzlers-Traps-Pitfalls-Corner/dp/032133678X">Amazon</a>) title written by two, well known, authors.</p>
+<pre>{
+  'title':    'Java Puzzlers: Traps, Pitfalls, and Corner Cases',
+  'isbn-10':  '032133678X',
+  'isbn-13':  '978-0321336781',
+  'authors':  ['Joshua Bloch', 'Neal Gafter']
+}
+</pre>
+<p>The above JSON comprise four fields, one of which is an array. These fields represent our book. Using the methods discussed in the <a href="http://www.javacreed.com/simple-gson-example/">Simple Gson Example</a> article would create a problem. By default, Gson expects to find variable names in Java with the same name as that found in JSON. Therefore, we should have a class with the following field names: <code>title</code>, <code>isbn-10</code>, <code>isbn-13</code> and <code>authors</code>. But names in Java cannot contain the minus sign (<code>-</code>) as described in the Java Language Specification (<a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-6.html" target="_blank">Chapter 6</a>).</p>
+<p>Using the <code>JsonDeserializer</code>, we have full control over how JSON is parsed as we will see in the following example. Alternatively we can use annotations as described in <a href="http://www.javacreed.com/gson-annotations-example/" target="_blank">Gson Annotations Example</a> article. Annotations provide less control, but are simpler to use and understand. With that said, annotations have their limitations too and cannot address all problems described here.</p>
+<p>Consider the following simple Java object.</p>
+<pre>package com.javacreed.examples.gson.part1;
+
+public class Book {
+
+  private String[] authors;
+  private String isbn10;
+  private String isbn13;
+  private String title;
+
+  <span class="comments">// Methods removed for brevity</span>
+}
+</pre>
+<p>This Java object will be used to hold the book listed in the JSON object shown earlier. Note that JSON object has four fields, one for each field found in JSON. The structure of these two objects (Java and JSON) is the same in this example but this is not required. The Java object can have a different structure than that found in the corresponding JSON object.</p>
+<p>In order to be able to parse JSON to Java we need to create our own instance of the <code>JsonDeserializer</code> interface and register this with the <code>GsonBuilder</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/GsonBuilder.html" target="_blank">Java Doc</a>). The following example shows our implementation of <code>JsonDeserializer</code>.</p>
+<pre>package com.javacreed.examples.gson.part1;
+
+import java.lang.reflect.Type;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
+public class BookDeserializer implements JsonDeserializer&lt;Book&gt; {
+
+  @Override
+  public Book deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+      throws JsonParseException {
+  
+    <span class="comments">//The deserialisation code is missing</span>
+
+    final Book book = new Book();
+    book.setTitle(title);
+    book.setIsbn10(isbn10);
+    book.setIsbn13(isbn13);
+    book.setAuthors(authors);
+    return book;
+  }
+}
+</pre>
+<p>The above example is not complete and we still need to add the most important thing, which is the deserialisation. Let’s understand this class before we make it more complex by adding more code to it. </p>
+<p>The interface <code>JsonDeserializer</code> requires a type, which is the type of object that we will be parsed. In this case, we are parsing JSON into the Java object of type <code>Book</code>. The return type of the <code>deserialize()</code> method must be of the same type as the generics parameter, <code>Book</code>.</p>
+<p>Gson will parse the JSON object into a Java object of type <code>JsonElement</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonElement.html" target="_blank">Java Doc</a>). An instance of <code>JsonElement</code> can be one of the following: </p>
+<ul>
+<li><code>JsonPrimitive</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonPrimitive.html" target="_blank">Java Doc</a>) – such as a string or integer</li>
+<li><code>JsonObject</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html" target="_blank">Java Doc</a>) – a collection of <code>JsonElement</code>s indexed by thier name (of type <code>String</code>). This is similar to a <code>Map&lt;String, JsonElement&gt;</code> (<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html" target="_blank">Java Doc</a>) </li>
+<li><code>JsonArray</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonArray.html" target="_blank">Java Doc</a>) – a collection of <code>JsonElement</code>s. Note that the array elements can be any of the four types and mixed types are supported.</li>
+<li><code>JsonNull</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonArray.html" target="_blank">Java Doc</a>) – a <code>null</code> value</li>
+</ul>
+<div id="attachment_4939" style="width: 656px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Types-of-JsonElement.png" class="" rel="prettyphoto" title="Types of JsonElement"><img src="./GSON Deserialiser Example   Java Creed_files/Types-of-JsonElement.png" alt="Types of JsonElement" width="646" height="487" class="size-full wp-image-4939" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Types of JsonElement</p></div>
+<p>The above image shows all types of <code>JsonElement</code>. The <code>JsonObject</code> can be thought of a collection of name/value pairs where the values are of type <code>JsonElement</code>. The following image shows an example of JSON object hierarchy.</p>
+<div id="attachment_4940" style="width: 959px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Json-Object-Hierarchy.png" class="" rel="prettyphoto" title="Json Object Hierarchy"><img src="./GSON Deserialiser Example   Java Creed_files/Json-Object-Hierarchy.png" alt="Json Object Hierarchy" width="949" height="521" class="size-full wp-image-4940" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Json Object Hierarchy</p></div>
+<p>The above image shows a JSON object hierarchy with a <code>JsonObject</code> as its root. It is important to note that, different from Java, JSON supports arrays of different types. In the above image, the <code>JsonArray</code> comprises <code>JsonObject</code>s, <code>JsonArray</code>s and <code>JsonPrimitive</code>s. Please note that the JSON object hierarchy shown above does not reflect the JSON object listed before. Following is the JSON object hierarchy for the JSON object listed before.</p>
+<div id="attachment_4941" style="width: 950px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Book-Json-Object-Hierarchy.png" class="" rel="prettyphoto" title="Book Json Object Hierarchy"><img src="./GSON Deserialiser Example   Java Creed_files/Book-Json-Object-Hierarchy.png" alt="Book Json Object Hierarchy" width="940" height="479" class="size-full wp-image-4941" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Book Json Object Hierarchy</p></div>
+<p>If we are to deserialise this JSON object, we first need to convert the given <code>JsonElement</code> into a <code>JsonObject</code> as shown next.</p>
+<pre><span class="comments">// The variable 'json' is passed as a parameter to the deserialize() method</span>
+final JsonObject jsonObject = json.getAsJsonObject();
+</pre>
+<p>A <code>JsonElement</code> can be converted to any of the other types using a similar approach.</p>
+<p>The elements within the a <code>JsonObject</code> can be retrieved by their name. For example, to retrieve the <code>title</code> element from the JSON listed above we can do the following.</p>
+<pre><span class="comments">// The variable 'json' is passed as a parameter to the deserialize() method</span>
+final JsonObject jsonObject = json.getAsJsonObject();
+<span class="highlight">JsonElement titleElement = jsonObject.get("title")</span>
+</pre>
+<p>The object returned is not a <code>String</code> but yet another <code>JsonElement</code>. This can be converted to <code>String</code> by invoking the <code>getAsString()</code> as shown below.</p>
+<pre><span class="comments">// The variable 'json' is passed as a parameter to the deserialize() method</span>
+final JsonObject jsonObject = json.getAsJsonObject();
+JsonElement titleElement = jsonObject.get("title")
+<span class="highlight">final String title = jsonTitle.getAsString();</span>
+</pre>
+<p>The following example shows how to convert the JSON object listed above using a custom deserializer.</p>
+<pre>package com.javacreed.examples.gson.part1;
+
+import java.lang.reflect.Type;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
+public class BookDeserializer implements JsonDeserializer&lt;Book&gt; {
+
+  @Override
+  public Book deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+      throws JsonParseException {
+    <span class="highlight">final JsonObject jsonObject = json.getAsJsonObject();
+
+    final JsonElement jsonTitle = jsonObject.get("title");
+    final String title = jsonTitle.getAsString();
+
+    final String isbn10 = jsonObject.get("isbn-10").getAsString();
+    final String isbn13 = jsonObject.get("isbn-13").getAsString();
+
+    final JsonArray jsonAuthorsArray = jsonObject.get("authors").getAsJsonArray();
+    final String[] authors = new String[jsonAuthorsArray.size()];
+    for (int i = 0; i &lt; authors.length; i++) {
+      final JsonElement jsonAuthor = jsonAuthorsArray.get(i);
+      authors[i] = jsonAuthor.getAsString();
+    }</span>
+
+    final Book book = new Book();
+    book.setTitle(title);
+    book.setIsbn10(isbn10);
+    book.setIsbn13(isbn13);
+    book.setAuthors(authors);
+    return book;
+  }
+}
+</pre>
+<p>In the above example, we are retrieving the JSON element and its four fields and returning an instance of <code>Book</code>.</p>
+<p>Before we can utilise our new deserializer, we must instruct Gson to use our deserializer when parsing objects of type <code>Book</code>, as shown in the next code example.</p>
+<pre>package com.javacreed.examples.gson.part1;
+
+import java.io.InputStreamReader;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+    <span class="comments">// Configure Gson</span>
+    GsonBuilder gsonBuilder = new GsonBuilder();
+    <span class="highlight">gsonBuilder.registerTypeAdapter(Book.class, new BookDeserializer());</span>
+    Gson gson = gsonBuilder.create();
+
+    <span class="comments">// The JSON data</span>
+    try(Reader reader = new InputStreamReader(Main.class.getResourceAsStream("/part1/sample.json"), "UTF-8")){
+
+      <span class="comments">// Parse JSON to Java</span>
+      Book book = gson.fromJson(reader, Book.class);
+      System.out.println(book);
+    }
+  }
+}
+</pre>
+<p>In the above example, we are creating an instance of <code>Gson</code> through the <code>GsonBuilder</code>. Using the <code>registerTypeAdapter()</code> method, we are registering our deserializer and instructing Gson to use our deserializer when deserializing objects of type <code>Book</code>. When we request Gson to deserialize an object to the <code>Book</code> class, Gson will use our deserializer. The following steps describes what happens when we invoke: <code> gson.fromJson(data, Book.class)</code>.</p>
+<ol>
+<li>Parse the input as <code>JsonElement</code>. Note that even though the type of the object is <code>JsonElement</code>, this can be anything. At this stage, the string JSON object is deserialised into Java objects of type <code>JsonElement</code>s. This step also ensures that the given JSON data is valid.</li>
+<li>Find the deserializer for the given object, in this case the <code>BookDeserializer</code> instance.</li>
+<li>Invokes the method <code>deserialize()</code> and provides the necessary parameters. In this example, our <code>deserialize()</code> will be invoked. Here an object of type <code>Book</code> is created from the given <code>JsonElement</code> object. This is from Java to Java conversion.</li>
+<li>Returns the object returned by the <code>deserialize()</code> method to the caller of the <code>fromJson()</code> method. This is like a chain, where Gson receives an object from our deserializer and returns it to its caller.</li>
+</ol>
+<p>Running the above example would print the following:</p>
+<pre>Java Puzzlers: Traps, Pitfalls, and Corner Cases 
+  [ISBN-10: 032133678X] [ISBN-13: 978-0321336781]
+Written by:
+  &gt;&gt; Joshua Bloch
+  &gt;&gt; Neal Gafter
+</pre>
+<p>This concludes our simple example. This example acts as a primer for following, more complex, examples. In the next example we will discuss an enhanced version of the objects discussed here, where the authors are not a simple string but an object.</p>
+<h2>Nested Objects</h2>
+<p>In this example we will describe how to deserialise nested objects, that is, objects within other objects. Here we will introduce a new entity, the author. A book, together with the title and ISBN can have a list of authors. On the other hand every author can have many books. The JSON object that will be using in this example differs from the previous one to cater for the new entity as shown next:</p>
+<pre>{
+  'title': 'Java Puzzlers: Traps, Pitfalls, and Corner Cases',
+  'isbn': '032133678X',
+  'authors':[
+    {
+      'id': 1,
+      'name': 'Joshua Bloch'
+    },
+    {
+      'id': 2,
+      'name': 'Neal Gafter'
+    }
+  ]
+}
+</pre>
+<p>The structure of the JSON object was changed slightly and instead of primitives we have the authors as JSON objects as shown in the following image.</p>
+<div id="attachment_4942" style="width: 966px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Book-and-Authors-Json-Objects-Hierarchy.png" class="" rel="prettyphoto" title="Book and Authors Json Objects Hierarchy"><img src="./GSON Deserialiser Example   Java Creed_files/Book-and-Authors-Json-Objects-Hierarchy.png" alt="Book and Authors Json Objects Hierarchy" width="956" height="532" class="size-full wp-image-4942" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Book and Authors Json Objects Hierarchy</p></div>
+<p>We still have one book, only this time we have a more complex and detailed JSON object. Together with a <code>name</code>, the author also has an <code>id</code>. A new class called <code>Author</code> is added to the model and the <code>Book</code> class now uses it to save the author information. This immediately leads to the following question.</p>
+<p><strong>How should we deserialise the new <code>Author</code> class?</strong><br>
+There are several options. </p>
+<ol>
+<li>We can update the <code>BookDeserializer</code> and add the authors’ deserialisation code there. This has a limitation as it binds the deserialization of the <code>Author</code> with that of the <code>Book</code>, and thus is not recommended.</li>
+<li>We can use the default Gson implementation, which will work well in this case as both the Java object (the <code>Author</code> class) and the JSON objects have the same fields’ names and can be deserialised as described in the article <a title="Simple Gson Example" href="http://www.javacreed.com/simple-gson-example/" target="_blank">Simple Gson Example</a>.</li>
+<li>Alternatively, we can write an <code>AuthorDeserializer</code> class which will take care of the deserialisation of authors.</li>
+</ol>
+<p>We will start with the second option, to keep the changes to a minimum and the example as simple as possible. Then we add the new deserializer to show the flexibility of Gson.</p>
+<p>The <code>JsonDeserializer</code> provides an instance of <code>JsonDeserializationContext</code> (<a href="http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonDeserializationContext.html" target="_blank">Java Doc</a>) as the third parameter to the <code>deserialize()</code> method. We have not yet used this parameter. We can delegate the deserialisation of objects to the given instance of <code>JsonDeserializationContext</code>. It will deserialise the given <code>JsonElement</code> and returns an instance of the required type as shown below.</p>
+<pre>Author author = context.deserialize(jsonElement, Author.class); 
+</pre>
+<p>The example shown above, is delegating the deserialisation of the <code>Author</code> class to the <code>context</code>. In turn it will try to locate an instance of <code>JsonDeserializer</code> that can deserialize it, if one is registered, otherwise it uses the default mechanism as described in the article titled: <a title="Simple Gson Example" href="http://www.javacreed.com/simple-gson-example/" target="_blank">Simple Gson Example</a>.</p>
+<p>Our example uses an array of <code>Author</code>s and thus we need to use the correct type as shown in the following example.</p>
+<pre>package com.javacreed.examples.gson.part2;
+
+import java.lang.reflect.Type;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
+public class BookDeserializer implements JsonDeserializer&lt;Book&gt; {
+
+  @Override
+  public Book deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+      throws JsonParseException {
+   final JsonObject jsonObject = json.getAsJsonObject();
+
+    final String title = jsonObject.get("title").getAsString();
+    final String isbn10 = jsonObject.get("isbn-10").getAsString();
+    final String isbn13 = jsonObject.get("isbn-13").getAsString();
+
+    <span class="comments">// Delegate the deserialization to the context</span>
+    <span class="highlight">Author[] authors = context.deserialize(jsonObject.get("authors"), Author[].class);</span>
+
+    final Book book = new Book();
+    book.setTitle(title);
+    book.setIsbn10(isbn10);
+    book.setIsbn13(isbn13);
+    book.setAuthors(authors);
+    return book;
+  }
+}
+</pre>
+<p>Converting from a <code>JsonPrimitive</code> to a <code>JsonObject</code> was very easy and straightforward as we saw in the above example.</p>
+<p>Like the <code>BookDeserialiser</code>, we can write the <code>ArthurDeserialiser</code> and deserialise the author in a similar fashion we did with the book as shown next,</p>
+<pre>package com.javacreed.examples.gson.part2;
+
+import java.lang.reflect.Type;
+
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
+public class AuthorDeserializer implements JsonDeserializer<author> {
+
+  @Override
+  public Author deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+      throws JsonParseException {
+    final JsonObject jsonObject = json.getAsJsonObject();
+
+    final Author author = new Author();
+    author.setId(jsonObject.get("id").getAsInt());
+    author.setName(jsonObject.get("name").getAsString());
+    return author;
+  }
+}
+</author></pre>
+<p>In order to use the <code>ArthurDeserialiser</code> we need to add this to the <code>GsonBuilder</code> as shown next,</p>
+<pre>package com.javacreed.examples.gson.part2;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+public class Main {
+
+  public static void main(final String[] args) throws IOException {
+    <span class="comments">// Configure GSON</span>
+    final GsonBuilder gsonBuilder = new GsonBuilder();
+    gsonBuilder.registerTypeAdapter(Book.class, new BookDeserializer());
+    <span class="highlight">gsonBuilder.registerTypeAdapter(Author.class, new AuthorDeserializer());</span>
+    final Gson gson = gsonBuilder.create();
+
+    <span class="comments">// Read the JSON data</span>
+    try (Reader reader = new InputStreamReader(Main.class.getResourceAsStream("/part2/sample.json"), "UTF-8")) {
+
+      <span class="comments">// Parse JSON to Java</span>
+      final Book book = gson.fromJson(reader, Book.class);
+      System.out.println(book);
+    }
+  }
+}
+</pre>
+<p>There is no need to change the <code>BookDeserialiser</code> as the deserialisation of the author is delegated to the <code>context</code>. This is another advantage of using the <code>context</code> to deserialise the other/nested objects. Running the above code will produce the following.</p>
+<pre>Java Puzzlers: Traps, Pitfalls, and Corner Cases [032133678X]
+Written by:
+  &gt;&gt; [1] Joshua Bloch
+  &gt;&gt; [2] Neal Gafter
+</pre>
+<p>This concludes this section about nested objects. In the next section we will see how to refer to JSON objects located elsewhere in the JSON object tree.</p>
+<h2>Object References</h2>
+<p>Consider the following JSON.</p>
+<pre>{
+  <span class="highlight">'authors': [
+    {
+      'id': 1,
+      'name': 'Joshua Bloch'
+    },
+    {
+      'id': 2,
+      'name': 'Neal Gafter'
+    }
+  ]</span>,
+  'books': [
+    {
+      'title': 'Java Puzzlers: Traps, Pitfalls, and Corner Cases',
+      'isbn': '032133678X',
+      <span class="highlight">'authors':[1, 2]</span>
+    },
+    {
+      'title': 'Effective Java (2nd Edition)',
+      'isbn': '0321356683', 
+      <span class="highlight">'authors':[1]</span>
+    }
+  ]
+}
+</pre>
+<p>The JSON object shown above comprise two authors and two books. The books have a reference to the authors through their ids as in this example the books’ field <code>authors</code> only contains the authors’ ids. This is quite a common scenario as this approach will reduce the size of the JSON object as duplicate objects are referred to by their id. The following image captures the new JSON object hierarchy.</p>
+<div id="attachment_4944" style="width: 957px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/New-JSON-Object-Hierarchy.png" class="" rel="prettyphoto" title="New JSON Object Hierarchy"><img src="./GSON Deserialiser Example   Java Creed_files/New-JSON-Object-Hierarchy.png" alt="New JSON Object Hierarchy" width="947" height="403" class="size-full wp-image-4944" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">New JSON Object Hierarchy</p></div>
+<p>This resembles relational database tables (<a href="http://en.wikipedia.org/wiki/Relational_database" target="_blank">Wiki</a>), where the book has a foreign key (<a href="http://en.wikipedia.org/wiki/Foreign_key" target="_blank">Wiki</a>) to the authors table. This new JSON object structure introduces new challenges that need to be addressed. When deserialising the books, we need to get hold of the authors that were deserialised from other branch of the JSON object hierarchy. The book only has the author id. The rest of the author information is found elsewhere, out of scope of the current context.</p>
+<p>There are various approaches to this problem, some of which are listed below.</p>
+<ol>
+<li>One approach is to use a two stage processing. First we parse JSON to Java, that is deserialise the books and authors as these appear in JSON. The book class will contain an array of authors’ ids and not an array or authors. Then, in the second stage, we associate the objects and set the authors to their books. The following image shows the flow described here.
+<div id="attachment_4945" style="width: 610px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Two-Stage-Processing.png" class="" rel="prettyphoto" title="Two Stage Processing"><img src="./GSON Deserialiser Example   Java Creed_files/Two-Stage-Processing.png" alt="Two Stage Processing" width="600" height="319" class="size-full wp-image-4945" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Two Stage Processing</p></div>
+<p>This approach requires more classes but provides a great deal of flexibility and provides better separation of concerns. We need to create a set of classes that simply represent the JSON objects in Java, then we need another set of classes that matches our requirements (model). In this example, we have one <code>Book</code> class and another <code>Author</code> class, two in total. Using this approach, we will end up with four classes, two for the book and another two for the author. While in this example, it may seem feasible, this becomes more complex when we have tens, if not hundreds of classes.
+</p></li>
+<li>Another approach is to provide the <code>BookDeserialiser</code> class with all authors and then have the deserialiser retrieving the authors from this shared object. This approach removes the need of the middle stage as the JSON objects are deserialised into <em>proper</em> Java objects without passing through an intermediate stage.
+<div id="attachment_4955" style="width: 552px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Shared-Object-between-Deserialisers.png" class="" rel="prettyphoto" title="Shared Object between Deserialisers"><img src="./GSON Deserialiser Example   Java Creed_files/Shared-Object-between-Deserialisers.png" alt="Shared Object between Deserialisers" width="542" height="343" class="size-full wp-image-4955" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Shared Object between Deserialisers</p></div>
+<p>While this approach may sound appealing, it requires that the <code>BookDeserialiser</code> and the <code>AuthorDeserialiser</code> share a common object. Furthermore, when retrieving authors the <code>BookDeserialiser</code> has to refer to this shared object instead of using the <code>JsonDeserializationContext</code> as we did before. This approach requires changes in several places. The deserialisers need to be modified and the <code>main()</code> method too.
+</p></li>
+<li>The <code>AuthorDeserialiser</code> can be made such that it caches the deserialised authors and return these next time requested by their id. This approach is quite attractive as it leverages the use of <code>JsonDeserializationContext</code> and make the relationship transparent. Unfortunately it adds in complexity as the <code>AuthorDeserialiser</code> needs to handle the caching. With that said, this approach requires the least changes as only the <code>AuthorDeserialiser</code> is modified.
+<div id="attachment_4957" style="width: 610px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/AuthorDeserialiser-using-Cache.png" class="" rel="prettyphoto" title="AuthorDeserialiser using Cache"><img src="./GSON Deserialiser Example   Java Creed_files/AuthorDeserialiser-using-Cache.png" alt="AuthorDeserialiser using Cache" width="600" height="238" class="size-full wp-image-4957" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text"><code>AuthorDeserialiser</code> using Cache</p></div>
+<p>As shown in the image above, only the <code>AuthorDeserialiser</code> accesses the cache object. The rest of the system is unaware of this.
+</p></li>
+</ol>
+<p>All approaches are feasible and all have their advantages and disadvantages. We will use the third approach as it is the one that has the least impact on the project.</p>
+<h4 class="wpb_toggle wpb_toggle_title_active">Observation</h4><div class="wpb_toggle_content wpb_toggle_open"><p>
+In theory, the first approach provides better separation of concerns when compared with the other two. We can have the association logic within the new <code>Data</code> class. But this requires many changes when compared with the third approach. That was the reason behind the use of the third approach over the other two. Always consider the effort required to make a change and try to minimise it.</p>
+</div>
+<p>The JSON object shown above contains two arrays. We need to have a new Java class that reflects this JSON object.</p>
+<pre>package com.javacreed.examples.gson.part3;
+
+public class Data {
+
+  private Author[] authors;
+  private Book[] books;
+
+  <span class="comments">// Methods removed for brevity</span>
+}
+</pre>
+<p>The fields order determines which of the two sets is deserialised first. This does not matter in our case and the books can be deserialised before the authors as we will see later on.</p>
+<p>The <code>AuthorDeserialiser</code> need to be modified such that it caches the authors that were deserialised as shown next.</p>
+<pre>package com.javacreed.examples.gson.part3;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+
+public class AuthorDeserializer implements JsonDeserializer&lt;Author&gt; {
+
+  private final ThreadLocal&lt;Map&lt;Integer, Author&gt;&gt; cache = new ThreadLocal&lt;Map&lt;Integer, Author&gt;&gt;() {
+    @Override
+    protected Map&lt;Integer, Author&gt; initialValue() {
+      return new HashMap&lt;&gt;();
+    }
+  };
+
+  @Override
+  public Author deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+      throws JsonParseException {
+
+    <span class="comments">// Only the ID is available</span>
+    if (json.isJsonPrimitive()) {
+      final JsonPrimitive primitive = json.getAsJsonPrimitive();
+      return getOrCreate(primitive.getAsInt());
+    } 
+
+    <span class="comments">// The whole object is available</span>
+    if (json.isJsonObject()) {
+      final JsonObject jsonObject = json.getAsJsonObject();
+
+      final Author author = getOrCreate(jsonObject.get("id").getAsInt());
+      author.setName(jsonObject.get("name").getAsString());
+      return author;
+    }
+
+    throw new JsonParseException("Unexpected JSON type: " + json.getClass().getSimpleName());
+  }
+
+  private Author getOrCreate(final int id) {
+    Author author = cache.get().get(id);
+    if (author == null) {
+      author = new Author();
+      author.setId(id);
+      cache.get().put(id, author);
+    }
+    return author;
+  }
+}
+</pre>
+<p>We made several changes in this class. Let us go through these changes one by one.</p>
+<ol>
+<li>The authors are stored in the following object.
+<pre>  private final ThreadLocal&lt;Map&lt;Integer, Author&gt;&gt; cache = new ThreadLocal&lt;Map&lt;Integer, Author&gt;&gt;() {
+    @Override
+    protected Map&lt;Integer, Author&gt; initialValue() {
+      return new HashMap&lt;&gt;();
+    }
+  };
+</pre>
+<p>It uses a <code>Map&lt;String, Object&gt;</code> as cache mechanism. The map is saved within a<br>
+<code>ThreadLocal</code> (<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/ThreadLocal.html" target="_blank">JavaDoc</a>) instance to isolate state between the multiple threads. This class allows multiple threads to use the same variable without interfering with the other threads.</p>
+<p></p><h4 class="wpb_toggle wpb_toggle_title_active">Observation</h4><div class="wpb_toggle_content wpb_toggle_open"><p>
+Please note that while this approach is thread-safe, it may not fulfil the needs of specific application domain needs and thus one may have to use a different approach. Please refer to the articles: <a href="http://www.javacreed.com/how-to-cache-results-to-boost-performance/" target="_blank">How to Cache Results to Boost Performance</a> and <a href="http://www.javacreed.com/caching-made-easy-with-spring/" target="_blank">Caching Made Easy with Spring</a> for more caching examples.</p>
+</div>
+</li>
+<li>The authors are always retrieved using the following method.
+<pre>  private Author getOrCreate(final int id) {
+    Author author = cache.get().get(id);
+    if (author == null) {
+      author = new Author();
+      cache.get().put(id, author);
+    }
+    return author;
+  }
+</pre>
+<p>This method first tries to obtain the authors instance from the cache. If no author is found with the given id, then one is created and added to the cache. </p>
+<p>This approach allows us to create the author with just its id, and then populate its contents later on when they become available. That is why the order of deserialisation does not affect the outcome. We can first deserialise the books and then the authors. In this case, first the authors are created with just their ids and the their names are added.</p></li>
+<li>The <code>deserialize()</code> was modified to handle the new requirements. Since many changes were applied, we will split this method further and describe each part separately.
+<p>The descerialiser can receive either a <code>JsonPrimitive</code> or a <code>JsonObject</code>. When the <code>BookDeserialiser</code> executes the following code, the <code>JsonElement</code> passed to the <code>AuthorDeserialiser</code> will be an instance of <code>JsonPrimitive</code>.</p>
+<pre>    <span class="comment">// This is executed within the BookDeserialiser</span>
+    Author[] authors = context.deserialize(jsonObject.get("authors"), Author[].class);
+</pre>
+<p>The following image shows this process.</p>
+<div id="attachment_4959" style="width: 877px" class="wp-caption aligncenter"><a href="./GSON Deserialiser Example   Java Creed_files/Delegating-Deserialisation-to-Context.png" class="" rel="prettyphoto" title="Delegating Deserialisation to Context"><img src="./GSON Deserialiser Example   Java Creed_files/Delegating-Deserialisation-to-Context.png" alt="Delegating Deserialisation to Context" width="867" height="502" class="size-full wp-image-4959" title="" style="visibility: visible; opacity: 1;"></a><p class="wp-caption-text">Delegating Deserialisation to Context</p></div>
+<p>The <code>BookDeserialiser</code> delegates the deseialisation of the <code>Author</code>s array to the context, and provides an array of integers. For each integer, the context invokes the <code>deserialize()</code> method of the <code>AuthorDeserialiser</code> and pass the integer as a <code>JsonPrimitive</code>.</p>
+<p>On the other hand, when the authors are deserialised, we will receive an instance of <code>JsonObject</code> containing the author and his/her details. Therefore, before we convert the given <code>JsonElement</code>, we need to determine whether it is of the correct type.</p>
+<pre>    <span class="comments">// Only the ID is available</span>
+    if (json.isJsonPrimitive()) {
+      final JsonPrimitive primitive = json.getAsJsonPrimitive();
+      final Author author = getOrCreate(primitive.getAsInt());
+      return author;
+    } 
+</pre>
+<p>In the above example, only the id was available. The <code>JsonElement</code> is converted into a <code>JsonPrimitive</code> and then into an <code>int</code>. This <code>int</code> is used to retrieve the author from the <code>getOrCreate()</code> method.</p>
+<p>The <code>JsonElement</code> can be of type <code>JsonObject</code> as shown next.</p>
+<pre>    <span class="comments">// The whole object is available</span>
+    if (json.isJsonObject()) {
+      final JsonObject jsonObject = json.getAsJsonObject();
+
+      final Author author = getOrCreate(jsonObject.get("id").getAsInt());
+      author.setName(jsonObject.get("name").getAsString());
+      return author;
+    }
+</pre>
+<p>In this case, the name is added to the <code>Author</code> instance returned by the <code>getOrCreate()</code> method, before the author is returned.</p>
+<p>Finally, if the given <code>JsonElement</code> instance is neither a <code>JsonPrimitive</code> nor a <code>JsonObject</code>, an exception is thrown to indicate that the given type is not supported.</p>
+<pre>    throw new JsonParseException("Unexpected JSON type: " + json.getClass().getSimpleName());
+</pre>
+</li>
+</ol>
+<p>The above captures all required changes to accommodate and address the new challenges. The <code>BookDeserialiser</code> and the <code>main()</code> method do not require any changes. Running the <code>main()</code> will produce the following.</p>
+<pre>Output missing...
+</pre>
+<p>This example concludes our article about the Gson desieralizer. Using a custom deserializer is not difficult and enables us to work with different JSON representations with little effort. Note that the Java domain objects do not need to correspond to the JSON object being parsed. Furthermore, we can use existing Java objects with new JSON representations. Some problems may be more challenging than others to solve. Try to keep the changes to the existing code to a minimum and your design as flexible as required (not as possible).</p>
+<div id="crp_related" class="crp_related"><h2>Related Posts</h2><ul><li><a href="http://www.javacreed.com/gson-serialiser-example/" class="crp_title">GSON Serialiser Example</a></li><li><a href="http://www.javacreed.com/gson-typeadapter-example/" class="crp_title">Gson TypeAdapter Example</a></li><li><a href="http://www.javacreed.com/gson-annotations-example/" class="crp_title">GSON Annotations Example</a></li><li><a href="http://www.javacreed.com/gson-typeadapter-example-serialise-large-objects/" class="crp_title">Gson TypeAdapter Example Serialise Large Objects</a></li><li><a href="http://www.javacreed.com/simple-gson-example/" class="crp_title">Simple GSON Example</a></li></ul><div style="clear:both"></div></div> </div>
+ 
+<div class="item-author clearfix">
+<div class="panel-outer"><img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="66" height="70" alt="Albert Attard" class="avatar avatar-70 wp-user-avatar wp-user-avatar-70 alignnone photo"><h3><a href="http://www.javacreed.com/author/albert/" title="Posts by Albert Attard" rel="author">Albert Attard</a></h3>
+<p>Albert Attard is a Java passionate and technical lead at a research group. You can find him on <a rel="author" href="https://plus.google.com/+AlbertAttard">Google+</a>. Over the past years Albert worked on various Java projects including traditional server/client applications, modular applications, large data handling applications and concurrent data manipulation applications to name a few. He has a BSc degree from the University of London (<a href="http://www.lon.ac.uk/">Homepage</a>) and an MSc Information Security with the same university. His MSc thesis (<a href="http://www.amazon.com/Novel-Card-Present-Payment-Scheme-Technology/dp/3659114529">Book</a>) received the 2012 SearchSecurity.co.UK award (<a href="http://www.computerweekly.com/feature/Royal-Holloway-2012-Designing-a-secure-contactless-payment-system">Website</a>). </p>
+<ul class="author-meta clearfix"><li><span class="author-meta-title">Published:</span> 64 posts</li><li><span class="author-meta-title">Web:</span> <a href="http://www.javacreed.com/" target="_blank">http://www.javacreed.com</a></li> </ul>
+</div>
+<ul class="social"> <li class="aim">
+<a href="http://www.javacreed.com/gson-deserialiser-example/albertattard" target="_blank"><img src="./GSON Deserialiser Example   Java Creed_files/logo-google.png" alt=""></a>
+</li> </ul>
+</div> <div id="comments" class=" comment-box border">   <h4 class="comment-box-title">
+15 Responses to “GSON Deserialiser Example” </h4><hr>
+<div class="comment-list">
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Niku</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">March 6, 2013</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=45#respond" onclick="return addComment.moveForm( &quot;comment-45&quot;, &quot;45&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Niku">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Clearly explained …. Keep up the good work !</p>
+</div>
+</div></div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Sumanth</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">August 7, 2013</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=268#respond" onclick="return addComment.moveForm( &quot;comment-268&quot;, &quot;268&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Sumanth">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>I think all your examples are nice. Look forward to more examples <img src="./GSON Deserialiser Example   Java Creed_files/icon_smile.gif" alt=":)" class="wp-smiley"></p>
+</div>
+</div></div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Robert</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">September 24, 2013</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=318#respond" onclick="return addComment.moveForm( &quot;comment-318&quot;, &quot;318&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Robert">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>This is all very good but you do not show how to parse all the keys. You are hardcoding the keys:</p>
+<pre>processBook(books, jsonObject.get("1").getAsJsonObject());
+</pre>
+<p>What if you do not know the number of books or even the key (the 1..4) of the books?</p>
+<p>What you need to do is:</p>
+<pre>for (Map.Entry entry : jsonObject.entrySet()) {
+    String key = entry.getKey();
+    books.addBookTitle(jsonObject.get(key).getAsString());
+}
+</pre>
+<p>in the deserialize method.</p>
+</div>
+</div></div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+kavitha</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">November 4, 2013</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=360#respond" onclick="return addComment.moveForm( &quot;comment-360&quot;, &quot;360&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to kavitha">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Hi ,<br>
+can u help me to rectify this error?..plz<br>
+getting this error</p>
+<pre>"Exception in thread "main" java.lang.NullPointerException
+	at java.io.Reader.(Unknown Source)
+	at java.io.InputStreamReader.(Unknown Source)
+	at ConsumingJsonMainClass.main(ConsumingJsonMainClass.java:18) "
+</pre>
+<p>in below line </p>
+<pre>//Collect Json Data
+Reader data = new InputStreamReader(ConsumingJsonMainClass.class.getResourceAsStream(path));
+</pre>
+<p>where path is </p>
+<pre>String path = "/GsonPractice/src/resources/server.json";
+</pre>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="28" height="28" alt="Albert Attard" class="avatar avatar-28 wp-user-avatar wp-user-avatar-28 alignnone photo"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://www.javacreed.com/" rel="external nofollow" class="url">Albert Attard</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">November 4, 2013</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=361#respond" onclick="return addComment.moveForm( &quot;comment-361&quot;, &quot;361&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Albert Attard">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Can you try to set the path to: <code>/server.json</code> or to <code>/resources/server.json</code>? This needs to be the absolute path from the root of the classpath.</p>
+</div>
+</div></div> 
+</div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/7a958b54c351e822ff74c534fc6b4a18" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Rob</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">February 2, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=425#respond" onclick="return addComment.moveForm( &quot;comment-425&quot;, &quot;425&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Rob">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Shame on you for breaking my native scrolling on my macbook. You should really disable that jquery nicescroll plugin for mac users.</p>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="28" height="28" alt="Albert Attard" class="avatar avatar-28 wp-user-avatar wp-user-avatar-28 alignnone photo"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://www.javacreed.com/" rel="external nofollow" class="url">Albert Attard</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">March 31, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=477#respond" onclick="return addComment.moveForm( &quot;comment-477&quot;, &quot;477&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Albert Attard">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Can you help me fixing this problem?</p>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/d98a5e277be02f53421f97aade50803b" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://codeversed.com/" rel="external nofollow" class="url">Steve Albright</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">April 28, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=509#respond" onclick="return addComment.moveForm( &quot;comment-509&quot;, &quot;509&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Steve Albright">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>It’s in your WordPress theme. You can just remove “$tt_body_scroll=$tt_body_scroll?$tt_body_scroll:jQuery(“html”).niceScroll()” in all the JS your loading.</p>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="28" height="28" alt="Albert Attard" class="avatar avatar-28 wp-user-avatar wp-user-avatar-28 alignnone photo"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://www.javacreed.com/" rel="external nofollow" class="url">Albert Attard</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">May 2, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=512#respond" onclick="return addComment.moveForm( &quot;comment-512&quot;, &quot;512&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Albert Attard">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Thank you for your input. We will have a look at this and will try to improve where we can.</p>
+</div>
+</div></div> 
+</div> 
+</div> 
+</div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Matias</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">July 7, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=570#respond" onclick="return addComment.moveForm( &quot;comment-570&quot;, &quot;570&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Matias">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Hi, good tutorial!</p>
+<p>I wanted to let you know I spotted a mistake (actually it appears 2 times): you wrote <code>ArthurDeserialiser</code> instead of <code>AuthorDeserialiser</code>.</p>
+<p>Cheers,</p>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="28" height="28" alt="Albert Attard" class="avatar avatar-28 wp-user-avatar wp-user-avatar-28 alignnone photo"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://www.javacreed.com/" rel="external nofollow" class="url">Albert Attard</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">July 8, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=571#respond" onclick="return addComment.moveForm( &quot;comment-571&quot;, &quot;571&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Albert Attard">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Thank you for letting me know. I will look into it and will update where necessary.</p>
+</div>
+</div></div> 
+</div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Lears</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">August 7, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=608#respond" onclick="return addComment.moveForm( &quot;comment-608&quot;, &quot;608&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Lears">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Hi, thanks for this tutorial it’s been really helpful to understand GSON, however, I’m having trouble trying to figure something out, how would this part go if I were to use a URL instead of a local resource file?</p>
+<pre>    // The JSON data
+    try(Reader reader = new InputStreamReader(Main.class.getResourceAsStream("/part1/sample.json"), "UTF-8")){
+
+      // Parse JSON to Java
+      Book book = gson.fromJson(reader, Book.class);
+      System.out.println(book);
+    }
+</pre>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/Avatar.png" width="28" height="28" alt="Albert Attard" class="avatar avatar-28 wp-user-avatar wp-user-avatar-28 alignnone photo"> <span class="comment-author-link"><span class="author-link-span">
+<a href="http://www.javacreed.com/" rel="external nofollow" class="url">Albert Attard</a></span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">August 8, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=609#respond" onclick="return addComment.moveForm( &quot;comment-609&quot;, &quot;609&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Albert Attard">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Hi,</p>
+<p>You can replace the <code>Main.class.getResourceAsStream("/part1/sample.json")</code> with any other <code>InputStream</code> as shown in the following example.</p>
+<pre>import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+public class Example {
+
+    private static class MyClass {
+        String kind;
+        String etag;
+    }
+    
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("https://www.googleapis.com/discovery/v1/apis/bigquery/v2/rest");
+        try (InputStream in = url.openStream(); BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"))) {
+            Gson gson = new GsonBuilder().create();
+            MyClass myObject = gson.fromJson(reader, MyClass.class);
+            
+            System.out.println(myObject.kind);
+            System.out.println(myObject.etag);
+        }
+    }
+}
+</pre>
+<p>Hope this helps.</p>
+</div>
+</div><div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Lears</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">August 10, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=612#respond" onclick="return addComment.moveForm( &quot;comment-612&quot;, &quot;612&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Lears">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Thanks for that I’ll try it!</p>
+</div>
+</div></div> 
+</div> 
+</div> 
+<div class="comment-block">
+<div class="comment">
+<div class="comment-author">
+<img src="./GSON Deserialiser Example   Java Creed_files/wpua-32x32.png" width="28" height="28" alt="" class="avatar avatar-28wp-user-avatar wp-user-avatar-28 alignnone photo avatar-default"> <span class="comment-author-link"><span class="author-link-span">
+Shankar Pillai</span>
+</span>
+<div class="comment-meta">
+<span class="comment-date">September 16, 2014</span>
+<span class="comment-replay-link"><a class="comment-reply-link btn btn-mini" href="http://www.javacreed.com/gson-deserialiser-example/?replytocom=656#respond" onclick="return addComment.moveForm( &quot;comment-656&quot;, &quot;656&quot;, &quot;respond&quot;, &quot;4301&quot; )" aria-label="Reply to Shankar Pillai">Reply</a></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="comment-body">
+<p>Very well written and explained!</p>
+</div>
+</div></div> 
+</div> 
+<div class="navigation">
+<div class="left"></div>
+<div class="right"></div>
+</div> <div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title"></h3><h4 id="reply-title">Leave a Comment</h4><hr> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.javacreed.com/gson-deserialiser-example/#respond" style="display:none;">Click here to cancel reply.</a></small>
+<form action="http://www.javacreed.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="novalidate">
+<div class="control-group overlabel-wrapper"><input type="text" name="author" id="author" class="span3 required" value="" tabindex="1"><label for="author" class="overlabel overlabel-apply">Name (*)</label></div>
+<div class="control-group overlabel-wrapper"><input type="text" name="email" id="email" class="required email span3" value="" tabindex="2"><label for="email" class="overlabel overlabel-apply">Email (*)</label>
+</div>
+<div class="control-group overlabel-wrapper"><input type="text" name="url" id="url" class="span3" value="" tabindex="3"><label for="url" class="overlabel overlabel-apply">Website</label></div>
+<p class="cptch_block"><br> <input type="hidden" name="cptch_result" value="hBc=">
+<input type="hidden" name="cptch_time" value="1425256011">
+<input type="hidden" value="Version: 4.0.9">
+four − 1 = <input id="cptch_input" class="cptch_input" type="text" autocomplete="off" name="cptch_number" value="" maxlength="2" size="2" aria-required="true" required="required" style="margin-bottom:0;display:inline;font-size: 12px;width: 40px;"></p> <div class="control-group overlabel-wrapper"><textarea name="comment" id="comment" class="input-xlarge span5 required" rows="8" tabindex="4"></textarea><label for="comment" class="overlabel overlabel-apply">Comment (*)</label></div> <p class="form-submit">
+<input name="submit" type="submit" id="submit" class="submit btn" value="Submit Comment">
+<input type="hidden" name="comment_post_ID" value="4301" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+</form>
+</div> 
+</div> </section> </div>
+</div>
+<div class="span3">
+<div class="widgets-container">
+<div class="masonry-widgets isotope" style="position: relative; overflow: hidden; height: 3162px;"><aside id="text-2" class="widget widget_text isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);"><h3 class="widget-title">Examples SVN Repository</h3> <div class="textwidget"><pre>https://java-creed-examples.googlecode.com/svn
+</pre>
+</div>
+</aside><aside id="text-3" class="widget widget_text isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 137px, 0px);"><h3 class="widget-title">Advertisement </h3> <div class="textwidget"><script async="" data-rocketsrc="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+ 
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-5674469676151789" data-ad-slot="3906729828" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><iframe width="200" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script type="text/rocketscript" data-rocketoptimized="true">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</aside><aside id="text-4" class="widget widget_text isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 409px, 0px);"><h3 class="widget-title">Donations</h3> <div class="textwidget"><div align="center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="9SC3235C47YCG">
+<input type="image" src="./GSON Deserialiser Example   Java Creed_files/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="./GSON Deserialiser Example   Java Creed_files/pixel.gif" width="1" height="1">
+</form>
+</div></div>
+</aside><aside id="ttrecentpostwidget-3" class="widget TTRecentPostWidget isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 542px, 0px);"><h3 class="widget-title">Articles</h3><ul class="themetonrecentposts"><li class="recent-news-item"><img style="width:52px; height:52px" src="./GSON Deserialiser Example   Java Creed_files/How-to-Retrieve-the-Video-Properties-150x150-52x52.png" alt="How to Retrieve the Video Properties"><h6><a href="http://www.javacreed.com/how-to-retrieve-the-video-properties/">How to Retrieve the Video Properties</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="./GSON Deserialiser Example   Java Creed_files/How-to-Modify-a-String-Without-Creating-a-New-One-150x150-52x52.png" alt="How to Modify a String Without Creating a New One"><h6><a href="http://www.javacreed.com/how-to-modify-a-string-without-creating-a-new-one/">How to Modify a String Without Creating a New One</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="./GSON Deserialiser Example   Java Creed_files/Using-Flyway-with-Virgo-150x150-52x52.png" alt="Using Flyway with Virgo"><h6><a href="http://www.javacreed.com/using-flyway-with-virgo/">Using Flyway with Virgo</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="./GSON Deserialiser Example   Java Creed_files/The-Broken-Singleton-150x150-52x52.png" alt="The Broken Singleton"><h6><a href="http://www.javacreed.com/the-broken-singleton/">The Broken Singleton</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="./GSON Deserialiser Example   Java Creed_files/Java-Fork-Join-Example-150x150-52x52.png" alt="Java Fork Join Example"><h6><a href="http://www.javacreed.com/java-fork-join-example/">Java Fork Join Example</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li></ul></aside><aside id="ttrecentpostwidget-4" class="widget TTRecentPostWidget isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 984px, 0px);"><h3 class="widget-title">How To</h3><ul class="themetonrecentposts"><li class="recent-news-item"><img style="width:52px; height:52px" src="" alt="How to Compute Hash Code of Streams"><h6><a href="http://www.javacreed.com/how-to-compute-hash-code-of-streams/">How to Compute Hash Code of Streams</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="" alt="How to Write InputStream to RandomAccessFile"><h6><a href="http://www.javacreed.com/how-to-write-inputstream-to-randomaccessfile/">How to Write InputStream to RandomAccessFile</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="" alt="How to Force Garbage Collection"><h6><a href="http://www.javacreed.com/how-to-force-garbage-collection/">How to Force Garbage Collection</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="" alt="How to Read UTF8 Strings with RandomAccessFile"><h6><a href="http://www.javacreed.com/how-to-read-utf8-strings-with-randomaccessfile/">How to Read UTF8 Strings with RandomAccessFile</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li><li class="recent-news-item"><img style="width:52px; height:52px" src="" alt="How to get Auto-Generated Key with JdbcTemplate"><h6><a href="http://www.javacreed.com/how-to-get-auto-generated-key-with-jdbctemplate/">How to get Auto-Generated Key with JdbcTemplate</a></h6><p class="tab-meta">no comments </p><div class="clearfix"></div></li></ul></aside><aside id="text-5" class="widget widget_text isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1468px, 0px);"><h3 class="widget-title">Advertisement</h3> <div class="textwidget"><script async="" data-rocketsrc="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+ 
+<ins class="adsbygoogle" style="display:inline-block;width:120px;height:600px" data-ad-client="ca-pub-5674469676151789" data-ad-slot="9689774623" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><iframe width="120" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script type="text/rocketscript" data-rocketoptimized="true">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</aside><aside id="categories-2" class="widget widget_categories isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 2140px, 0px);"><h3 class="widget-title">Categories</h3> <ul>
+<li class="cat-item cat-item-3"><a href="http://www.javacreed.com/category/articles/">Articles</a>
+</li>
+<li class="cat-item cat-item-79"><a href="http://www.javacreed.com/category/awt/">AWT</a>
+</li>
+<li class="cat-item cat-item-50"><a href="http://www.javacreed.com/category/cache/">Cache</a>
+</li>
+<li class="cat-item cat-item-70"><a href="http://www.javacreed.com/category/collections-2/">Collections</a>
+</li>
+<li class="cat-item cat-item-46"><a href="http://www.javacreed.com/category/concurrency/">Concurrency</a>
+</li>
+<li class="cat-item cat-item-224"><a href="http://www.javacreed.com/category/crypto/">Crypto</a>
+</li>
+<li class="cat-item cat-item-71"><a href="http://www.javacreed.com/category/dependency-injection/">Dependency Injection</a>
+</li>
+<li class="cat-item cat-item-161"><a href="http://www.javacreed.com/category/design/">Design</a>
+</li>
+<li class="cat-item cat-item-156"><a href="http://www.javacreed.com/category/eclipse/">Eclipse</a>
+</li>
+<li class="cat-item cat-item-104"><a href="http://www.javacreed.com/category/error/">Error</a>
+</li>
+<li class="cat-item cat-item-4"><a href="http://www.javacreed.com/category/gson/">GSON</a>
+</li>
+<li class="cat-item cat-item-72"><a href="http://www.javacreed.com/category/guice/">Guice</a>
+</li>
+<li class="cat-item cat-item-78"><a href="http://www.javacreed.com/category/how-to/">How To</a>
+</li>
+<li class="cat-item cat-item-36"><a href="http://www.javacreed.com/category/intro/">Introduction</a>
+</li>
+<li class="cat-item cat-item-191"><a href="http://www.javacreed.com/category/io/">IO</a>
+</li>
+<li class="cat-item cat-item-184"><a href="http://www.javacreed.com/category/jdbc/">JDBC</a>
+</li>
+<li class="cat-item cat-item-123"><a href="http://www.javacreed.com/category/jvm/">JVM</a>
+</li>
+<li class="cat-item cat-item-221"><a href="http://www.javacreed.com/category/lang/">Lang</a>
+</li>
+<li class="cat-item cat-item-59"><a href="http://www.javacreed.com/category/maven/">Maven</a>
+</li>
+<li class="cat-item cat-item-228"><a href="http://www.javacreed.com/category/media/">Media</a>
+</li>
+<li class="cat-item cat-item-162"><a href="http://www.javacreed.com/category/object-oriented-programming/">Object Oriented Programming</a>
+</li>
+<li class="cat-item cat-item-108"><a href="http://www.javacreed.com/category/performance/">Performance</a>
+</li>
+<li class="cat-item cat-item-53"><a href="http://www.javacreed.com/category/process/">Process</a>
+</li>
+<li class="cat-item cat-item-49"><a href="http://www.javacreed.com/category/spring/">Spring</a>
+</li>
+<li class="cat-item cat-item-120"><a href="http://www.javacreed.com/category/sql/">SQL</a>
+</li>
+<li class="cat-item cat-item-45"><a href="http://www.javacreed.com/category/swing/">Swing</a>
+</li>
+<li class="cat-item cat-item-200"><a href="http://www.javacreed.com/category/testing/">Testing</a>
+</li>
+<li class="cat-item cat-item-37"><a href="http://www.javacreed.com/category/tips/">Tips</a>
+</li>
+<li class="cat-item cat-item-75"><a href="http://www.javacreed.com/category/tomcat/">Tomcat</a>
+</li>
+<li class="cat-item cat-item-177"><a href="http://www.javacreed.com/category/tutorial/">Tutorial</a>
+</li>
+<li class="cat-item cat-item-84"><a href="http://www.javacreed.com/category/utilities/">Utilities</a>
+</li>
+<li class="cat-item cat-item-218"><a href="http://www.javacreed.com/category/virgo/">Virgo</a>
+</li>
+<li class="cat-item cat-item-74"><a href="http://www.javacreed.com/category/web-application/">Web Application</a>
+</li>
+</ul>
+</aside> </div>
+</div> </div>
+</div> </div>
+</div></div>
+</section>
+   
+<footer id="footer">
+<div class="footer-sidebar-container">
+<div class="container"><div class="row">
+<div class="span12"><div id="text-6" class="widget widget_text"> <div class="textwidget"><a href="https://www.yourkit.com/java/profiler/" target="_blank" class="wpweb footer-image">
+<img src="./GSON Deserialiser Example   Java Creed_files/Your-Kit.png" title="Your Kit">
+</a>
+<a href="https://www.jetbrains.com/idea/" target="_blank" class="wpweb footer-image">
+<img src="./GSON Deserialiser Example   Java Creed_files/Intellij.png" title="Intellij">
+</a></div>
+</div></div> </div></div>
+</div>
+</footer>
+ 
+<div class="sub-footer">
+<div class="container"><div class="row">
+<div class="span12">
+<div class="copyright"><small>Copyright © 2012 javacreed.com. All Rights Reserved. <a href="http://www.web-design-malta.com/" target="_blank" title="Webee Web Design Malta" style="text-decoration:none; ">Web Design in Malta by <img src="./GSON Deserialiser Example   Java Creed_files/webee-black.png" border="0" alt="Webee Web Design Malta" title="Webee Web Design Malta" style="border-width: 0px; border-style: none; background:none;"></a></small>
+</div>
+<div class="footer-bottom-menu"><ul id="footer-menu" class=""><li id="menu-item-4495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4495"><a href="http://www.javacreed.com/about-the-website/">About The Website</a></li>
+</ul></div>
+</div>
+</div></div>
+</div>
+</div>
+ 
+<script type="text/rocketscript" data-rocketoptimized="true">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37192864-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.prettyPhoto.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/bootstrap.min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.easing.1.3.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.validate.min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.jplayer.min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.preloader.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.flexslider-min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.isotope.min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.infinitescroll.min.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/jquery.fitvids.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/buttons.js?ver=4.1.1" data-rocketoptimized="true"></script>
+<script type="text/rocketscript" data-rocketsrc="http://www.javacreed.com/wp-content/themes/PressGrid-3.3.1/js/scripts.js?ver=4.1.1" data-rocketoptimized="true"></script>
+
+
+ 
+ 
+ <iframe id="stSegmentFrame" name="stSegmentFrame" src="./GSON Deserialiser Example   Java Creed_files/getSegment.html" frameborder="0" scrolling="no" width="0px" height="0px" style="display:none;"></iframe><div id="stwrapper" class="stwrapper" style="visibility: hidden; top: -999px; left: -999px;"><div class="stclose"></div><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" width="353px" height="350px" src="./GSON Deserialiser Example   Java Creed_files/index.8fd5b40d6e4511040cdaebf13b1f3b05.html" style="top: 0px; left: 0px;"></iframe></div><iframe name="oauth2relay314135088" id="oauth2relay314135088" src="./GSON Deserialiser Example   Java Creed_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

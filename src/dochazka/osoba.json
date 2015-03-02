@@ -1,0 +1,29 @@
+[
+    {
+        "jmeno": "Vladimír",
+        "prijmeni": "Krutý",
+        "rodnecislo": {"rc":"710812/1457"},
+        "udalost": [
+                    {"cas":"31-08-2012 10:20:56", "typ":"příchod"},
+                    {"cas":"31-08-2012 10:20:56", "typ":"odchod"}
+                   ]
+    },
+    {
+        "jmeno": "Miloš",
+        "prijmeni": "Viróza",
+        "rodnecislo": {"rc":"480502/1898"},
+        "udalost": [
+                    {"cas":"31-08-2012 10:20:56", "typ":"příchod"},
+                    {"cas":"31-08-2012 10:20:56", "typ":"odchod"}
+                   ]
+    },
+    {
+        "jmeno": "Václav",
+        "prijmeni": "Chytrolín",
+        "rodnecislo": {"rc":"570130-s6574"},
+        "udalost": [
+                    {"cas":"31-10-2012 10:20:56", "typ":"příchod"},
+                    {"cas":"3-4-2013 10:20:56", "typ":"odchod"}
+                   ]
+    }
+]

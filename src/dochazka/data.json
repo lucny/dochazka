@@ -1,0 +1,45 @@
+{
+"osoba": [
+    {
+        "jmeno": "Vladimír",
+        "prijmeni": "Krutý",
+        "rodnecislo": {"rc":"710812/1457"}
+    },
+    {
+        "jmeno": "Miloš",
+        "prijmeni": "Viróza",
+        "rodnecislo": {"rc":"480502/1898"}
+    },
+    {
+        "jmeno": "Václav",
+        "prijmeni": "Chytrolín",
+        "rodnecislo": {"rc":"570130-s6574"}
+    }
+],
+"udalost": [
+    {
+        "cas": "2015-03-02 08:00:00", 
+        "osoba": 2
+    },
+    {
+        "cas": "2015-03-02 08:05:00", 
+        "osoba": 3
+    },
+    {
+        "cas": "2015-03-02 08:15:00", 
+        "osoba": 1
+    },
+    {
+        "cas": "2015-03-02 10:55:00", 
+        "osoba": 1
+    },
+    {
+        "cas": "2015-03-02 14:15:00", 
+        "osoba": 2
+    },
+    {
+        "cas": "2015-03-02 15:03:00", 
+        "osoba": 3
+    }    
+  ]
+}
